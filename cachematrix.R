@@ -1,10 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
-
-
-## macke cache matrix is a contrust where we set matrix and later retrive data if needed agai
+## macke cache matrix is a contrust where we set matrix and later retrive data if needed again
+## it is just setter getter function which store data in a way cache do
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
   
@@ -22,13 +18,11 @@ makeCacheMatrix <- function(x = matrix()) {
   list(set = set, get = get,
        seti = seti,
        geti = geti)
-  
-    
 }
 
 
-## Write a short comment describing this function
-
+## cache solve takes makeCacheMatrix object and inverse the matrix and return value
+## if matrix was inversed before it redurn saved data 
 cacheSolve <- function(x, ...) {
   i <- x$geti()
   if(!is.null(i)) {
