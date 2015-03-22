@@ -7,21 +7,22 @@
 ## macke cache matrix is a contrust where we set matrix and later retrive data if needed agai
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
- 
+  
   set <- function(x) {
     m <<- x
     i <<- NULL
   }
   
-  get <- function(m)
+  get <- function() x
   
-  setinverse <- function(inverse) i <<- inverse
+  seti <- function(inverse){ i <<- inverse }
   
-  getinverse <- function() i
+  geti <- function() i
   
   list(set = set, get = get,
-       ##setinverse = setinverse,
-       getinverse = getinverse)
+       seti = seti,
+       geti = geti)
+  
     
 }
 
@@ -29,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-  i <- x$getinverse()
+  i <- x$geti()
   if(!is.null(i)) {
     message("getting cached data")
     return(i)
@@ -37,6 +38,6 @@ cacheSolve <- function(x, ...) {
   
   data <- x$get()
   i <- solve(data)
-  x$setmean(i)
+  x$seti(i)
   i
 }
